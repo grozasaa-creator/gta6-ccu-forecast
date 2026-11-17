@@ -28,13 +28,13 @@ LEVELS = [0.05, 0.25, 0.5, 0.75, 0.95]
 HOUR = 3600
 
 # Tunables (fitted on a leave-one-out run over the comparables, tools/eval_loo.py).
-BW_RATIO = 1.0      # bandwidth on ln(hour 1 / highest of the 14 hours before)
-BW_SIZE = 2.0       # bandwidth on ln(hour 1)
-SPREAD0 = 0.12      # log spread of each comparable's kernel at hour 2
-SPREAD1 = 0.25      # extra log spread at hour 24 (grows with sqrt of the hours ahead)
-WIDEN = 0.9         # widens the weighted quantiles around their median
+BW_RATIO = 0.75     # bandwidth on ln(hour 1 / highest of the 14 hours before)
+BW_SIZE = 1.0       # bandwidth on ln(hour 1)
+SPREAD0 = 0.16      # log spread of each comparable's kernel at hour 2
+SPREAD1 = 0.5       # extra log spread at hour 24 (grows with sqrt of the hours ahead)
+WIDEN = 0.6         # scales the weighted quantiles around their median (the kernels already carry the spread)
 MIN_RAMP = math.log(3.0)
-TIER_WEIGHT = {"weak": 0.3, "early-access-contaminated": 0.5}
+TIER_WEIGHT = {"weak": 0.3, "early-access-contaminated": 0.75}
 
 
 def to_epoch(s: str) -> int:
